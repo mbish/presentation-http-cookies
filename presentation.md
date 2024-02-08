@@ -373,6 +373,11 @@ You'll notice a few things about cookies already
 
 ---
 
+#### Q&A
+* And now for something completely different
+
+---
+
 ### References
 Cookie Format RFC - https://datatracker.ietf.org/doc/html/rfc6265
 Cookie Wikipedia Page - https://en.wikipedia.org/wiki/HTTP_cookie
