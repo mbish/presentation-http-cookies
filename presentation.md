@@ -375,6 +375,7 @@ You'll notice a few things about cookies already
 
 #### Q&A
 * And now for something completely different
+![width:300px center](./images/cookies.png)
 
 ---
 
