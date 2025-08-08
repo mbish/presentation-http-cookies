@@ -39,10 +39,6 @@ style: |
 # Cookies!
 
 The cure for stateless requests
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
-</script>
 
 ---
 <!-- header: Cookies > General Overview -->
@@ -79,7 +75,7 @@ You can view cookies right now
 <!-- _class: info -->
 ### Why do we even have cookies?
 
-<div class="mermaid">
+```mermaid
 sequenceDiagram
     participant Client
     participant Server
@@ -87,8 +83,8 @@ sequenceDiagram
     Server->>Client: /products.html
     Client->>Server: POST /cart/add/0123
     Client->>Server: GET /cart
+```
     
-</div>
 
 * In this situation how does the server know who the client is?
 
@@ -387,3 +383,28 @@ Cookie Wikipedia Page - https://en.wikipedia.org/wiki/HTTP_cookie
 Cookie patent - https://worldwide.espacenet.com/patent/search/family/024155035/publication/US5774670A?q=pn%3DUS5774670A
 Mozilla restricts third-party cookies - https://developer.mozilla.org/en-US/blog/goodbye-third-party-cookies/
 CSRF - https://en.wikipedia.org/wiki/Cross-site_request_forgery
+
+---
+
+<!-- Mermaid text overflow bug
+https://github.com/mermaid-js/mermaid/issues/5252 -->
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+
+  function fixFonts(id) {
+    let el = document.getElementById(id);
+    let renderedHeight = el.getBoundingClientRect().height;
+    let guessedHeight = el.getBBox().height;
+    let renderedWidth = el.getBoundingClientRect().width;
+    let guessedWidth = el.getBBox().width;
+    let ratio = Math.max(renderedHeight / guessedHeight, renderedWidth / guessedWidth);
+    el.style.setProperty("font-size", (ratio * 11) + "pt");
+  }
+
+  await mermaid.run({
+    querySelector: '.language-mermaid',
+    postRenderCallback: fixFonts
+  });
+</script>
